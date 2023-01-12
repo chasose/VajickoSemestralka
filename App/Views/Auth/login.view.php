@@ -3,7 +3,7 @@ $layout = 'auth';
 /** @var Array $data */
 ?>
 <div class="popis">
-    <h1>PRIHLAS SA </h1>
+    <h1>PRIHLÁS SA </h1>
 
 </div>
 <div class="menu">

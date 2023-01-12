@@ -35,7 +35,7 @@ if ($auth->isAdminLogged()) {?>
             <h3><?php echo $offer->getTitle() ?></h3>
             <p><?php echo $offer->getDescription() ?></p>
             <button type="submit" onclick="addToCard('<?php echo $offer->getId()?>','<?php echo $offer->getTitle() ?>',
-                    '<?php echo $offer->getPrice() ?>',document.getElementById('<?php echo $offer->getId()?>quantity').value)" class="kup">VLOZIT DO KOSIKA</button>
+                    '<?php echo $offer->getPrice() ?>',document.getElementById('<?php echo $offer->getId()?>quantity').value)" class="kup" autofocus>VLOZIT DO KOSIKA</button>
             <input type="number" id="<?php echo $offer->getId()?>quantity" name="quantity" min="1" max="20" value="1" style="text-align: center">
         </div>
     </div>

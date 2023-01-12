@@ -20,12 +20,13 @@ use App\Model\openingHour;
                 <td><?php echo $oneDay->getDay() ?></td>
                 <?php if ($auth->isAdminLogged()) {?>
                     <form action="?c=openingHours&a=editSchedule&id=<?php echo $oneDay->getId()?>" method="post">
-                    <td><input value="<?php echo $oneDay->getStartTime() ?>" type="time" id="startTime" name="startTime">
+                    <td><input value="<?php echo $oneDay->getStartTime() ?>" type="time" id="startTime" name="startTime" autofocus>
                         <input value="<?php echo $oneDay->getEndTime() ?>" type="time" id="endTime" name="endTime"></td>
                     <td><input type="submit" class="btn btn-warning" value="ULOZ"></td>
                     </form>
                 <?php } else { ?>
                     <td><?php echo $oneDay->getStartTime(),'&nbsp;-&nbsp' ,$oneDay->getEndTIme() ?></td>
+                    <a href="" autofocus></a>
                 <?php } ?>
             </tr>
         <?php } ?>
