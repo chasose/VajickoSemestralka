@@ -1,4 +1,5 @@
 <?php /** @var \App\Model\user $data */?>
+
 <div class="popis" style="margin-top: 5%">
 
     <div class="row" >
@@ -22,12 +23,12 @@
                     <input name="address" type="text" id="address" class="form-control" placeholder="Adresa" required value="<?php echo $data->getAddress()?>"> <br>
 
                     <div class="text-center">
-                        <button class="tlacidlo-prihlasenia btn btn-primary" type="submit" name="submit" id="submit">Uloz zmeny
+                        <button class="tlacidlo-prihlasenia btn btn-primary" type="submit" name="submit" id="submit">Ulož zmeny
                         </button>
                     </div>
                     <br>
                     <div class="text-center">
-                        <a href="?c=users&a=showFormForPwd" class="tlacidlo-prihlasenia btn btn-warning" id="change">Zmenit heslo
+                        <a href="?c=users&a=showFormForPwd" class="tlacidlo-prihlasenia btn btn-warning" id="change">Zmeniť heslo
                         </a>
                     </div>
                     <br>
@@ -36,12 +37,12 @@
                     /** @var App\Auth\DummyAuthenticator $auth */
                     if ($auth->isAdminLogged()) {?>
                         <div class="text-center">
-                            <a href="?c=admin&a=showAllOrders" class="tlacidlo-prihlasenia btn btn-danger" >Ukaz historiu vsetkych objednavok
+                            <a href="?c=admin&a=showAllOrders" class="tlacidlo-prihlasenia btn btn-danger" >Ukáž históriu všetkých objednávok
                             </a>
                         </div>
                     <?php } else {?>
                         <div class="text-center">
-                            <a href="?c=users&a=showUserOrders" class="tlacidlo-prihlasenia btn btn-danger" >Ukaz historiu objednavok
+                            <a href="?c=users&a=showUserOrders" class="tlacidlo-prihlasenia btn btn-danger" >Ukáž moju históriu objednávok
                             </a>
                         </div>
                     <?php }?>

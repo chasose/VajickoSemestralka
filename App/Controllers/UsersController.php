@@ -29,6 +29,10 @@ class UsersController extends AControllerBase
         $dataUser = user::getOneByName('name',$user);
 
         if (isset($formData['submit'])) {
+            $telNumberVal = $this->validating($formData['telNumber']);
+            if ($telNumberVal === false) {
+                return $this->html($dataUser, viewName: 'userAccountInfo');
+            }
             $this->saveUserIntoDatabase($dataUser->getName(),$dataUser->getEmail(),$dataUser->getPassword(),
                 $formData['firstName'],$formData['secondName'],$formData['telNumber'],$formData['address']);
             $dataUser = user::getOneByName('name',$user);
