@@ -32,8 +32,8 @@ $layout = 'auth';
                             <button class="tlacidlo-prihlasenia btn btn-primary" type="submit" name="submit">Prihlásiť
                             </button>
                         </div>
-                        <div class="registration" style="color: #111111">
-                            <a href="?c=users&a=index">Zaregistruj sa, ak este nemas ucet!</a>
+                        <div class="registration" style="color: #111111; text-align: center" >
+                            <a href="?c=users&a=index">Zaregistruj sa, ak ešte nemáš účet!</a>
                         </div>
                     </form>
                 </div>

@@ -4,8 +4,8 @@
 use App\Model\offer;
 ?>
 <div class="popis">
-    <h1>Vyberte si pizzu a nasledne objednajte</h1>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+    <h1>Vyberte si pizzu a následne objednajte</h1>
+
 </div>
 <?php /** @var auth $auth */
 if ($auth->isAdminLogged()) {?>

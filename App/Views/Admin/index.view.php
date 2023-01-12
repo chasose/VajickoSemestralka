@@ -6,9 +6,9 @@
                 <div style="font-size: 30px">
                     Vitaj, <strong><?= $auth->getLoggedUserName() ?></strong>!<br><br>
                     <?php if ($auth->isAdminLogged()) { ?>
-                    Ako admin mozes pridavat, menit alebo mazat zaznamy.
+                    Ako admin môžes pridávať, meniť alebo mazať záznamy.
                     <?php } else {?>
-                        Ako uzivatel si mozes prezerat svoje posledne objednavky.
+                        Ako užívatel si možes objednať jedlo a aj prezerať svoje posledné objednávky.
                     <?php } ?>
                 </div>
             </div>

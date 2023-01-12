@@ -92,6 +92,7 @@ class UsersController extends AControllerBase
         $user->setTelNumber($telNumber);
         $user->setAddress($address);
         $user->save('id',0);
+        return 1;
     }
 
     public function checkCredentials():Response {

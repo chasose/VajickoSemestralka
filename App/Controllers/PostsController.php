@@ -73,10 +73,13 @@ class PostsController extends AControllerBase
 
     public function edit()
     {
-        $id = $this->request()->getValue('id');
-        if ($id){
-            $postToEdit = Post::getOne($id);
+        if ($this->app->getAuth()->isAdminLogged()){
+            $id = $this->request()->getValue('id');
+            if ($id){
+                $postToEdit = Post::getOne($id);
+            }
+
         }
-        return $this->html($postToEdit,viewName: 'create.form');
+        return $this->html(viewName: 'create.form');
     }
 }
