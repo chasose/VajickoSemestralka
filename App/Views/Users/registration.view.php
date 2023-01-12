@@ -19,21 +19,31 @@ $layout = 'auth';
                 <form class="registration-form" method="post" action="<?= \App\Config\Configuration::REGISTRATION_URL ?>">
                     <div class="form-label-group mb-3">
 
-                        <span id="check-email" style="color: white;">.</span>
+                        <label for="email">Zadaj email:</label>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span> <span id="check-email" style="color: white;"></span>
                         <input name="email" type="email" id="email" class="form-control" placeholder="Email" required autofocus onkeyup="checkEmail()">
 
                     </div>
+                    <label for="firstName">Zadaj krstné meno:</label>
                     <input name="firstName" type="text" id="fistName" class="form-control" placeholder="Meno" required>
+                    <label for="secondName">Zadaj priezvisko:</label>
                     <input name="secondName" type="text" id="secondName" class="form-control" placeholder="Priezvisko" required>
+                    <label for="telNumber">Zadaj tel. číslo:</label>
                     <input name="telNumber" type="number" id="telNumber" class="form-control" placeholder="Telefonne cislo" required>
+                    <label for="address">Zadaj adresu:</label>
                     <input name="address" type="text" id="address" class="form-control" placeholder="Adresa" required> <br>
                     <div class="form-label-group mb-3">
+                        <label for="name">Zadaj prihlasovacie meno:</label>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
                         <span id="check-username" style="color: white;">.</span>
                         <input name="name" type="text" id="name" class="form-control" placeholder="Pouzivatelske meno" required autofocus onkeyup="checkUsername()">
                         <label class="form-label" for="name"></label>
                     </div>
 
                     <div class="passChecker form-label-group mb-3">
+                        <label for="password">Zadaj heslo:</label>
                         <input name="password" type="password" id="password" class="form-control"
                                placeholder="Heslo" required> <br>
                         <p id="message"></p>
