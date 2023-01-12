@@ -41,25 +41,28 @@ class PostsController extends AControllerBase
     public function store()
     {
         $id = $this->request()->getValue('id');
-        if ($id) {
-            $post = Post::getOne($id);
-            try {
-                unlink($post->getImg());
+        if (isset($_FILES['img'])){
+            if ($id) {
+                $post = Post::getOne($id);
+                try {
+                    unlink($post->getImg());
 
-            }catch (\Exception $e){
-                print 'Unable to unlink file';
+                }catch (\Exception $e){
+                    print 'Unable to unlink file';
+                }
+
+            } else {
+                $post = new Post();
             }
 
-        } else {
-            $post = new Post();
+            $upload_folder = "public/images/";
+            $newName = time()."_".$_FILES['img']['name'];
+            if (move_uploaded_file($_FILES["img"]["tmp_name"],$upload_folder .$newName)){
+                $post->setImg($upload_folder .$newName);
+                $post->save('id',0);
+            }
         }
 
-        $upload_folder = "public/images/";
-        $newName = time()."_".$_FILES['img']['name'];
-        if (move_uploaded_file($_FILES["img"]["tmp_name"],$upload_folder .$newName)){
-            $post->setImg($upload_folder .$newName);
-            $post->save('id',0);
-        }
 
         return $this->redirect("?c=posts");
     }

@@ -49,7 +49,9 @@ class AuthController extends AControllerBase
      */
     public function logout(): Response
     {
-        $this->app->getAuth()->logout();
+        if($this->app->getAuth()->isLogged()){
+            $this->app->getAuth()->logout();
+        }
         return $this->html(viewName: 'logout');
     }
 

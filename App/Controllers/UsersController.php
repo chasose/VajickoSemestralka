@@ -46,8 +46,26 @@ class UsersController extends AControllerBase
             $regist = $this->app->getAuth()->register($formData['name'],$formData['email'], $formData['password']);
             if ($regist) {
                 $hashPassword = password_hash( $formData['password'],PASSWORD_DEFAULT);
-                $this->saveUserIntoDatabase($formData['name'],$formData['email'],$hashPassword,$formData['firstName'],
+
+                $emailVal = $formData['email'];
+                $emailVal = filter_var( $emailVal, FILTER_VALIDATE_EMAIL);
+                if ($emailVal === false) {
+                    $data = ['message' => 'INVALID EMAIL'] ;
+                    return $this->html($data);
+                }
+
+                $telNumberVal = $this->validating($formData['telNumber']);
+                if ($telNumberVal === false) {
+                    $data = ['message' => 'INVALID telNumber'] ;
+                    return $this->html($data);
+                }
+
+                $check = $this->saveUserIntoDatabase($formData['name'],$formData['email'],$hashPassword,$formData['firstName'],
                     $formData['secondName'],$formData['telNumber'],$formData['address']);
+                if ($check == null){
+                    $data = ['message' => 'INVALID INPUT DATA'] ;
+                    return $this->html($data);
+                }
                 return $this->redirect('?c=auth&a=login');
             }
         }
@@ -56,14 +74,16 @@ class UsersController extends AControllerBase
         return $this->html($data);
     }
 
-    public function saveUserIntoDatabase(string $name, string $email, string $hashedPassword,string $firstName,
-                                         string $secondName,string $telNumber, string $address){
+    public function saveUserIntoDatabase($name,$email,$hashedPassword,$firstName,
+                                         $secondName,$telNumber,$address){
         if (user::getOneByName('name',$name)){
             $user = user::getOneByName('name',$name);
         } else{
             $user = new User();
         }
-
+        if ($name === "" || $email === "" || $hashedPassword === "" || $firstName === "" || $secondName === "" || $telNumber === "" || $address === ""){
+            return null;
+        }
         $user->setName($name);
         $user->setPassword($hashedPassword);
         $user->setEmail($email);
@@ -135,6 +155,14 @@ class UsersController extends AControllerBase
         }
 
         return $this->html($user,viewName: 'userOrders');
+    }
+
+    function validating($phone){
+        if(preg_match('/^[0-9]{10}+$/', $phone)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -15,7 +15,7 @@ if ($auth->isAdminLogged()) {?>
 <?php }?>
 <a href="?c=orders" class="block kup" onclick="switchButton()"  >NAKUPNY KOSIK</a>
 <?php foreach ($data as $offer) {
-    if ($offer->getVisible() === 0) break; ?>
+    if ($offer->getVisible() === 0) continue; ?>
 <div class="menu">
     <?php if ($auth->isAdminLogged()) {?>
         <div class="tlacidla">
@@ -36,7 +36,7 @@ if ($auth->isAdminLogged()) {?>
             <p><?php echo $offer->getDescription() ?></p>
             <button type="submit" onclick="addToCard('<?php echo $offer->getId()?>','<?php echo $offer->getTitle() ?>',
                     '<?php echo $offer->getPrice() ?>',document.getElementById('<?php echo $offer->getId()?>quantity').value)" class="kup">VLOZIT DO KOSIKA</button>
-            <input type="number" id="<?php echo $offer->getId()?>quantity" name="quantity" min="1" value="1" style="text-align: center">
+            <input type="number" id="<?php echo $offer->getId()?>quantity" name="quantity" min="1" max="20" value="1" style="text-align: center">
         </div>
     </div>
 

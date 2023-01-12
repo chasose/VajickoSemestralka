@@ -23,7 +23,7 @@ $layout = 'auth';
                         <input name="email" type="email" id="email" class="form-control" placeholder="Email" required autofocus onkeyup="checkEmail()">
 
                     </div>
-                    <input name="firstName" type="text" id="fistName" class="form-control" placeholder="Meno" required>
+                    <input name="firstName" type="text" id="fistName" class="form-control" placeholder="Meno">
                     <input name="secondName" type="text" id="secondName" class="form-control" placeholder="Priezvisko" required>
                     <input name="telNumber" type="number" id="telNumber" class="form-control" placeholder="Telefonne cislo" required>
                     <input name="address" type="text" id="address" class="form-control" placeholder="Adresa" required> <br>

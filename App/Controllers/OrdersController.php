@@ -39,15 +39,24 @@ class OrdersController extends AControllerBase
         $searcharray = [];
         parse_str($formData, $searcharray);
         $current_datetime = date('Y-m-d H:i:s');
-        $order = $this->sendToDatabase($this->app->getAuth()->getLoggedUserId(),$current_datetime,$searcharray['address'],$searcharray['tel-number']);
-        foreach ($data as $item){
-            $this->createOrderItem($order->getOrderId(),$item['id'],$item['quantity'],$item['price']*$item['quantity']);
+        if (isset($data) && isset($formData)){
+            $order = $this->sendToDatabase($this->app->getAuth()->getLoggedUserId(),$current_datetime,$searcharray['address'],$searcharray['tel-number']);
+            if ($order != null){
+                foreach ($data as $item){
+                    $this->createOrderItem($order->getOrderId(),$item['id'],$item['quantity'],$item['price']*$item['quantity']);
+            }
+
+            }
         }
+
 
     }
 
-    public function sendToDatabase($user,$time,$adress,$telNumber):Order {
+    public function sendToDatabase($user,$time,$adress,$telNumber) {
         $order = new Order();
+        if ($user === "" || $time === "" ||$adress === "" || $telNumber === ""){
+            return null;
+        }
         $order->setUserId($user);
         $order->setCreated($time);
         $order->setAdress($adress);
@@ -58,6 +67,9 @@ class OrdersController extends AControllerBase
 
     public function createOrderItem($orderId,$offerId,$quantity,$price){
         $order_item = new order_item();
+        if ($orderId === "" || $offerId === "" ||$quantity === "" || $price === ""){
+            return null;
+        }
         $order_item->setOrderId($orderId);
         $order_item->setOfferId($offerId);
         $order_item->setQuantity($quantity);
