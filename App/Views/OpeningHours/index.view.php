@@ -3,6 +3,7 @@
 
 use App\Model\openingHour;
 ?>
+
 <div class="popis">
     <h1>Otvaracie hodiny v nasom podniku</h1>
 </div>
